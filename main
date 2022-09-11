@@ -1,0 +1,32 @@
+let txts = []
+let ft
+let sentence = "THE NEW WORLD DIMENSION | THE NEW WORLD DIMENSION | THE NEW WORLD DIMENSION | THE NEW WORLD DIMENSION | THE NEW WORLD DIMENSION"
+let webGLGraphics
+
+let overAllTexture
+let bgm
+function preload(){
+	ft = loadFont("IBMPlexMono-Bold.ttf")
+	bgm = loadSound("201102 New Dimensions.mp3")
+}
+function setup() {
+	createCanvas(1000,1000);
+	pixelDensity(2)
+	webGLGraphics = createGraphics(width,height,WEBGL);
+	textFont(ft)
+	let textureHeight = 500
+	for(var i=0;i<5;i++){
+		txts[i] = createGraphics(1200,textureHeight)
+		txts[i].pixelDensity(2)
+		txts[i].textFont(ft)
+		// txts[i].clear(0,0,1000,500)
+		txts[i].fill([0,0,0,255][i%4])
+		txts[i].strokeWeight(2)
+		let spanWidth = i*2+1
+		txts[i].rect(0,250-spanWidth,1180,spanWidth*2)
+		txts[i].fill(0)
+		txts[i].text(sentence,0,textureHeight/2+25)
+	}
+	webGLGraphics.background(255);
+	background(0)
+	

@@ -29,4 +29,40 @@ function setup() {
 	}
 	webGLGraphics.background(255);
 	background(0)
+	// noprotect
+	overAllTexture=createGraphics(width,height)
+	overAllTexture.loadPixels()
+	// noStroke()
+	for(var i=0;i<width+50;i++){
+		for(var o=0;o<height+50;o++){
+			overAllTexture.set(i,o,color(100,noise(i/30,o/30,i*o/50)*random([0,20,40,120])))
+		}
+	}
+	overAllTexture.updatePixels()
+	bgm.loop()
+	bgm.play()
 	
+}
+
+function draw() {
+	webGLGraphics.push()
+	webGLGraphics.clear(0,0,width,height)
+	webGLGraphics.fill(0)
+	webGLGraphics.rotateX(sin(frameCount/100 + mouseX/100))
+	webGLGraphics.rotateY(cos(frameCount/50+ mouseY/100) )
+	webGLGraphics.rotateZ(cos(frameCount/50))
+	webGLGraphics.stroke(0)
+	
+	webGLGraphics.noFill()
+	webGLGraphics.box(20)
+	webGLGraphics.noStroke()
+	for(var i=0;i<15;i++){
+		webGLGraphics.push()
+			webGLGraphics.texture(txts[i%5])
+			webGLGraphics.rotateX(sin(frameCount/200+i))
+			webGLGraphics.rotateY(cos(frameCount/100+i*5))
+			webGLGraphics.rotateZ(cos(frameCount/100+i*3))
+			webGLGraphics.sphere(250+i*10 + noise(i,frameCount/50)*20,64)
+		webGLGraphics.pop()
+	}
+	webGLGraphics.pop()

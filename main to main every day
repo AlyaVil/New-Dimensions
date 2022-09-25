@@ -66,4 +66,4 @@ function draw() {
 		webGLGraphics.pop()
 	}
 	webGLGraphics.pop()
-Night and night or ever day
+Night 

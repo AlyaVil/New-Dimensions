@@ -88,5 +88,5 @@ clear(0,0,width,height)
 		blendMode(MULTIPLY)
 		image(overAllTexture,0,0)
 	pop()
-	// ellipse(mouseX, mouseY, 30, 30);
+	// ellipse(mouseX, mouseY, 20, 20);
 }
